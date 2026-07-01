@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+description: Modelo de datos que representa a un cliente existente.
+type: object
+properties:
+  id:
+    description: Identificador único del cliente generado por el sistema.
+    type: string
+    example: "CUST-900Z-2026"
+  firstName:
+    type: string
+    example: "Luis Germán"
+  lastName:
+    type: string
+    example: "Vázquez Rentería"
+  email:
+    type: string
+    example: "german_1241@hotmail.com"
+  phone:
+    type: string
+    required: false
+    example: "5550001122"
+  status:
+    description: Estado actual del cliente en el sistema.
+    type: string
+    enum: [ ACTIVE, INACTIVE, SUSPENDED ]
+    example: "ACTIVE"
+  createdAt:
+    description: Fecha de creación del registro.
+    type: datetime
+    example: "2026-07-02T16:00:00Z"
+  updatedAt:
+    description: Fecha de última actualización del registro.
+    type: datetime
+    required: false
+    example: "2026-07-02T16:20:00Z"

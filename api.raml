@@ -1,0 +1,84 @@
+#%RAML 1.0
+title: Customer API POC
+version: v1
+description: Proof of Concept API demonstrating the usage of the commons library for standardized endpoints and resilient patterns.
+usage: !include README.md
+
+uses:
+  # for local development
+  #commons: ../raml-commons-lib/library.raml
+  commons: exchange_modules/9ab9d867-71c2-4d3a-9e2e-62e07b9fa2f8/raml-commons-lib/1.0.2/library.raml
+
+securedBy:
+  - commons.client-id-enforcement
+
+types:
+  CustomerRequest: !include types/customers/CustomerRequest.raml
+  CustomerResponse: !include types/customers/CustomerResponse.raml
+  CustomerPatch: !include types/customers/CustomerPatch.raml
+  CustomerPaginatedResponse:
+    type: commons.PaginatedResponse
+    description: Strongly typed paginated response for Customer entities.
+    properties:
+      data:
+        type: array
+        items: CustomerResponse
+
+/health:
+  displayName: API Health Check
+  type: commons.health-check
+
+/customers:
+  displayName: Customers Collection
+  description: Core collection for managing Customer records in the master database.
+  type: commons.collection
+  post:
+    is:
+      - commons.request-json:
+          requestType: CustomerRequest
+          requestExample: !include examples/customers/customer-post-request.json
+      - commons.response-201-json:
+          responseDescription: "Customer created successfully."
+          responseType: CustomerResponse
+          responseExample: !include examples/customers/customer-response.json
+  get:
+    is:
+      - commons.pagination
+      - commons.response-200-json:
+          responseDescription: "Paginated customer list retrieved successfully."
+          responseType: CustomerPaginatedResponse
+          responseExample: !include examples/customers/customer-paginated-list-response.json
+
+  /{idCustomer}:
+    displayName: Customer Item
+    description: Operations over a specific Customer entity.
+    type: commons.item
+    uriParameters:
+      idCustomer:
+        type: string
+        example: "CUST-900Z-2026"
+        description: Unique identifier for the Customer record.
+    get:
+      is:
+        - commons.response-200-json:
+            responseDescription: "Customer details retrieved successfully."
+            responseType: CustomerResponse
+            responseExample: !include examples/customers/customer-response.json
+    patch:
+      is:
+        - commons.request-json:
+            requestType: CustomerPatch
+            requestExample: !include examples/customers/customer-patch-request.json
+        - commons.response-204-empty:
+            responseDescription: "Customer partially updated successfully."
+    put:
+      is:
+        - commons.request-json:
+            requestType: CustomerRequest
+            requestExample: !include examples/customers/customer-put-request.json
+        - commons.response-204-empty:
+            responseDescription: "Customer fully replaced successfully."
+    delete:
+      is:
+        - commons.response-204-empty:
+            responseDescription: "Customer deleted successfully."

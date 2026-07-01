@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+description: Modelo de datos para la creación de un nuevo cliente.
+type: object
+properties:
+  firstName:
+    description: Nombre de pila del cliente.
+    type: string
+    example: "Luis Germán"
+  lastName:
+    description: Apellido del cliente.
+    type: string
+    example: "Vázquez"
+  email:
+    description: Correo electrónico de contacto.
+    type: string
+    pattern: "^.+@.+\\..+$"
+    example: "german_1241@hotmail.com"
+  phone:
+    description: Teléfono a 10 dígitos.
+    type: string
+    required: false
+    example: "5551234567"

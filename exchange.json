@@ -1,0 +1,19 @@
+{
+  "main": "api.raml",
+  "name": "common library poc",
+  "classifier": "raml",
+  "tags": [],
+  "descriptorVersion": "1.0.0",
+  "dependencies": [
+    {
+      "groupId": "9ab9d867-71c2-4d3a-9e2e-62e07b9fa2f8",
+      "assetId": "raml-commons-lib",
+      "version": "1.0.2",
+      "classifier": "raml-fragment",
+      "packaging": "zip"
+    }
+  ],
+  "groupId": "9ab9d867-71c2-4d3a-9e2e-62e07b9fa2f8",
+  "assetId": "common-library-poc",
+  "version": "1.0.0"
+}

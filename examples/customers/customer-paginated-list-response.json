@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "totalRecords": 1500,
+    "offset": 0,
+    "limit": 50
+  },
+  "data": [
+    {
+      "id": "CUST-900Z-2026",
+      "firstName": "Luis German",
+      "lastName": "Vazquez",
+      "email": "german_1241@hotmail.com",
+      "phone": "5551234567",
+      "status": "ACTIVE",
+      "createdAt": "2026-07-02T15:28:48Z"
+    },
+    {
+      "id": "CUST-150W-2026",
+      "firstName": "Juan",
+      "lastName": "M.",
+      "email": "juan@ejemplo.com",
+      "status": "ACTIVE",
+      "createdAt": "2026-07-01T10:00:00Z"
+    }
+  ]
+}
