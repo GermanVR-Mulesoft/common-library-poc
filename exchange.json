@@ -15,5 +15,8 @@
   ],
   "groupId": "9ab9d867-71c2-4d3a-9e2e-62e07b9fa2f8",
   "assetId": "common-library-poc",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "organizationId": "9ab9d867-71c2-4d3a-9e2e-62e07b9fa2f8",
+  "apiVersion": "v1",
+  "originalFormatVersion": "1.0"
 }
